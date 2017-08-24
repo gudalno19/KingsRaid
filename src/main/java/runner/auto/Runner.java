@@ -31,7 +31,7 @@ public class Runner {
 		// File classpathRoot = new File(System.getProperty("user.dir"));
 		// File appDir = new File(classpathRoot, "/Apps/Amazon/");
 		// File app = new File(appDir, "in.amazon.mShop.android.shopping.apk");
-
+		// maven command: clean compile assembly:single
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
 		capabilities.setCapability("deviceName", "device");
