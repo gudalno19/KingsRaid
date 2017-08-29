@@ -17,7 +17,7 @@ public class GameActions extends Driver {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void farming() {
+	public void farming(int waitTime) {
 		logger.debug("Going to DIA LAO");
 		// click prepare battle
 		click(1335, 817, 3000);
@@ -29,7 +29,7 @@ public class GameActions extends Driver {
 		click(1217, 787, 10000);
 
 		// wait 3min for fighting
-		waitTo(120000);
+		waitTo(waitTime);
 
 		// click win first time
 		click(737, 491, 10000);
@@ -70,12 +70,16 @@ public class GameActions extends Driver {
 		click(710, 701, 2000);// click xac nhan
 
 		waitTo(15000);
-		click(1367, 109);// click xac nhan
+		// click(1367, 109);// click xac nhan
 	}
 
-	public void autoFarming() {
-		for (int i = 0; i < 12; i++) {
-			farming();
+	public void autoFarming(int timeCount, int waitTime) {
+		int stop = 999;
+		if (timeCount > 0) {
+			stop = timeCount;
+		} 
+		for (int i = 0; i < stop; i++) {
+			farming(waitTime);
 			sellItems();
 		}
 	}

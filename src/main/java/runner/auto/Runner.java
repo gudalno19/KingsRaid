@@ -3,6 +3,8 @@ package runner.auto;
 import java.io.File;
 import java.io.IOException;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -53,12 +55,25 @@ public class Runner {
 	}
 
 	public static void main(String[] args) {
-		initDriver();
+		// initDriver();
+		int fightingCount = 0;
+		int waitingTime = 0;
+		if (args.length > 0) {
+			for (String arg : args) {
+				if (arg.contains("--c")) {
+					String[] temp = arg.split(":");
+					fightingCount = Integer.parseInt(temp[1]);
+				} else if (arg.contains("--w")) {
+					String[] temp = arg.split(":");
+					waitingTime = Integer.parseInt(temp[1]);
+				}
+			}
+		}
 		GameActions action = new GameActions(driver);
 		action.logIn();
-		action.autoFarming();
+		action.autoFarming(fightingCount, waitingTime);
 
-		cleanDriver();
+		// cleanDriver();
 	}
 
 }

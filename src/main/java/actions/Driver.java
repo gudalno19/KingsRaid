@@ -47,7 +47,6 @@ public class Driver {
 		waitTo(DEFAULT_TIMEOUT);
 	}
 
-
 	public void swipeDirection(String direction) {
 		logger.debug("Swiping to: " + direction.toUpperCase());
 		if (direction.toLowerCase().equals("down")) {
@@ -59,7 +58,6 @@ public class Driver {
 		}
 		waitTo(1000);
 	}
-
 
 	public void screenshot(String savePath) {
 		logger.debug("Taking screenshot");
@@ -76,7 +74,11 @@ public class Driver {
 	public void waitTo(long timeout) {
 		logger.debug("waiting...");
 		try {
-			Thread.sleep(timeout);
+			if (timeout < 500) {
+				Thread.sleep(timeout * 1000);
+			} else {
+				Thread.sleep(timeout);
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
