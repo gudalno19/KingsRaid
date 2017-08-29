@@ -55,7 +55,7 @@ public class Runner {
 	}
 
 	public static void main(String[] args) {
-		// initDriver();
+		initDriver();
 		int fightingCount = 0;
 		int waitingTime = 0;
 		if (args.length > 0) {
@@ -73,7 +73,7 @@ public class Runner {
 		action.logIn();
 		action.autoFarming(fightingCount, waitingTime);
 
-		// cleanDriver();
+		cleanDriver();
 	}
 
 }
